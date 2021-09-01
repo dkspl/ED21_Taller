@@ -1,0 +1,32 @@
+﻿<div class="modal" tabindex="-1" role="dialog" id="modalRepuesto">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Nuevo repuesto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" id="FormRepuesto">
+                <div class="modal-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label for="NombreRepuesto" class="control-label">Nombre:</label>
+                        <input name="Nombre" class="form-control" id="NombreRepuesto" />
+                    </div>
+                    <div class="form-group">
+                        <label for="PrecioRepuesto" class="control-label">Precio (en ARS$)</label>
+                        <input type="number" step="any" name="Precio" class="form-control" id="PrecioRepuesto" />
+                    </div>
+                    <div class="form-group d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-primary mr-4" data-dismiss="modal" aria-label="Close">
+                            Cancelar
+                        </button>
+                        <input type="submit" value="Crear repuesto" class="btn btn-primary" id="SubmitRepuesto"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

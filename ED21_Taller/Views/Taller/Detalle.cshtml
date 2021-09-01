@@ -1,0 +1,90 @@
+﻿@model Models.ViewModels.PresupuestoDetailVM
+@{
+    ViewData["Title"] = "Presupuesto N°" + Model.Id;
+}
+
+<div class="container">
+    <section class="container">
+        <h3>Datos del vehículo</h3>
+        <div class="form-group mt-2">
+            <label class="control-label">Patente</label>
+            <span class="form-control">@Model.Vehiculo.Patente</span>
+        </div>
+        <div class="row">
+            <div class="form-group col">
+                <label class="control-label">Marca</label>
+                <span class="form-control">@Model.Vehiculo.Marca</span>
+            </div>
+            <div class="form-group col">
+                <label class="control-label">Modelo</label>
+                <span class="form-control">@Model.Vehiculo.Modelo</span>
+            </div>
+        </div>
+    </section>
+    @if (Model.Repuestos.Count > 0)
+    {
+        <section class="container mt-3">
+            <h3>Repuestos necesarios</h3>
+            <table class="table mt-2">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Repuesto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var repuesto in Model.Repuestos)
+                    {
+                        <tr>
+                            <td>@repuesto.Nombre</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </section>
+    }
+    <section class="container mt-3">
+        <h3>Resumen</h3>
+        <table class="table mt-2">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Concepto</th>
+                    <th scope="col">Importe (en ARS$)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Costo por mano de obra</th>
+                    <td>@Model.ManoDeObra</td>
+                </tr>
+                <tr>
+                    <th scope="row">Costo por días de trabajo</th>
+                    <td>@Model.Estacionamiento</td>
+                </tr>
+                <tr>
+                    <th scope="row">Costo por repuestos</th>
+                    <td>@Model.TotalRepuestos</td>
+                </tr>
+                <tr>
+                    <th scope="row">Recargos</th>
+                    <td>@Model.Recargos</td>
+                </tr>
+                <tr>
+                    <th scope="row">Descuentos</th>
+                    <td>@Model.Descuentos</td>
+                </tr>
+                <tr>
+                    <th scope="row">Adicionales</th>
+                    <td>+%20</td>
+                </tr>
+                <tr>
+                    <th scope="row">Total a pagar</th>
+                    <th>@Model.Total</th>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <div class="container">
+        <a href="/" class="btn btn-outline-info btn-lg mb-5 mt-2 mr-2">Ir a Lista</a>
+        <a href="/" class="btn btn-info btn-lg mb-5 mt-2">Ir a Inicio</a>
+    </div>
+</div>

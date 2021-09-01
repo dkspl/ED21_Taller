@@ -1,0 +1,31 @@
+﻿@model List<Models.ViewModels.PresupuestoListVM>
+@{
+    ViewData["Title"] = "Presupuestos";
+}
+<div class="container mt-4">
+    <h2>Presupuestos generados</h2>
+    <table class="table table-hover mt-4" id="lista">
+        <thead>
+            <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Patente</th>
+                <th scope="col">Monto total</th>
+                <th scope="col">Detalle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var presupuesto in Model)
+            {
+                <tr class="table-row">
+                    <td>@presupuesto.Fecha</td>
+                    <td>@presupuesto.Patente </td>
+                    <td>ARS$ @presupuesto.MontoTotal </td>
+                    <td><a class="btn btn-info" href="/Taller/Detalle/@presupuesto.Id">Ver</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="form-group mt-5">
+        <a href="/" class="btn btn-outline-info btn-lg mr-3">Ir a Inicio</a>
+    </div>
+</div>

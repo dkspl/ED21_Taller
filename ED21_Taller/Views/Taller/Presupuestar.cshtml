@@ -1,0 +1,57 @@
+﻿@model Models.ViewModels.DesperfectoRequestVM
+@{
+    ViewData["Title"] = "Crear presupuesto";
+}
+<partial name="_ModalRepuesto.cshtml" />
+<div class="container">
+    <div class="container">
+        <form asp-controller="Taller" asp-action="Presupuestar" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Vehiculo" class="control-label"></label>
+                <span class="form-control">@ViewBag.Vehiculo</span>
+                <span asp-validation-for="ManoDeObra" class="text-danger"></span>
+                <input type="hidden" asp-for="Vehiculo" value="@ViewBag.Vehiculo" />
+            </div>
+            <div class="form-group">
+                <label asp-for="ManoDeObra" class="control-label"></label>
+                <input asp-for="ManoDeObra" class="form-control" />
+                <span asp-validation-for="ManoDeObra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tiempo" class="control-label"></label>
+                <input asp-for="Tiempo" class="form-control" />
+                <span asp-validation-for="Tiempo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descuentos" class="control-label"></label>
+                <input asp-for="Descuentos" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Recargos" class="control-label"></label>
+                <input asp-for="Recargos" class="form-control" />
+                <span asp-validation-for="Recargos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="Repuestos[]" class="control-label">Repuestos</label>
+                <select multiple="multiple" name="Repuestos[]" class="js-example-basic-multiple custom-select" id="selectRepuestos">
+                    @foreach (var repuesto in ViewBag.Repuestos)
+                    {
+                        <option value="@repuesto.Id">@repuesto.Nombre - ARS$ @repuesto.Precio</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <span>Si no se encuentra en la lista, puede agregar el repuesto solicitado</span>
+                <button type="button" class="btn btn-success ml-2" data-toggle="modal" data-target="#modalRepuesto">
+                    Agregar repuesto
+                </button>
+            </div>
+            <div class="form-group mt-5">
+                <a href="/" class="btn btn-outline-success btn-lg mr-3">Cancelar</a>
+                <input type="submit" value="Generar presupuesto" class="btn btn-success btn-lg" />
+            </div>
+        </form>
+    </div>
+    
+</div>
