@@ -7,5 +7,5 @@
 /Repositories/obj
 /Services/bin
 /Services/obj
-.gitignore
-.gitattributes
+/.gitignore
+/.gitattributes
